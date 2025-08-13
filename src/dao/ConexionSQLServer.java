@@ -4,10 +4,25 @@
  */
 package dao;
 
-/**
- *
- * @author aletu
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class ConexionSQLServer {
-    
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=GestorTareas;encrypt=true;trustServerCertificate=true";
+    private static final String USUARIO = "Ale";
+    private static final String CONTRASENA = "1234";
+
+    static {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (ClassNotFoundException e) {
+            System.err.println(" Driver JDBC no encontrado: " + e.getMessage());
+        }
+    }
+
+    public static Connection obtenerConexion() throws SQLException {
+        return DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+    }
 }
+

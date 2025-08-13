@@ -4,17 +4,16 @@
  */
 package app;
 
-/**
- *
- * @author aletu
- */
-public class Main {
+import uiux.VentanaPrincipal;
 
-    /**
-     * @param args the command line arguments
-     */
+import javax.swing.*;
+
+public class Main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Asegura que la UI se construya en el hilo de eventos de Swing
+        SwingUtilities.invokeLater(() -> {
+            VentanaPrincipal ventana = new VentanaPrincipal();
+            ventana.setVisible(true);
+        });
     }
-    
 }
